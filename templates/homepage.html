@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/globals.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <div class="desktop">
+      <div class="overlap-wrapper">
+        <div class="overlap">
+          <div class="background">
+            <div class="overlap-group">
+              <img class="img" src="{{ url_for('static', filename='img/background.svg') }}" /> <img class="background-2" src="{{ url_for('static', filename='img/background-1.png') }}" />
+            </div>
+          </div>
+          <img class="pattern" src="{{ url_for('static', filename='img/pattern.svg') }}" />
+          <div class="image">
+            <div class="overlap-group-wrapper">
+              <div class="div">
+                <img class="vector" src="{{ url_for('static', filename='img/vector-7.svg') }}" />
+                <img class="vector-2" src="{{ url_for('static', filename='img/vector-4.svg') }}" />
+                <div class="ellipse"></div>
+                <div class="ellipse-2"></div>
+                <div class="ellipse-3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="element">
+            <div class="card-1">
+              <div class="content">
+                <div class="div-2"><img class="element-2" src="{{ url_for('static', filename='img/10328754-1.png') }}" /></div>
+                <div class="flexcontainer">
+                  <p class="text">
+                    <span class="text-wrapper">TRÍCH LỌC <br /></span>
+                  </p>
+                  <p class="text">
+                    <span class="text-wrapper">THÔNG TIN <br /></span>
+                  </p>
+                  <p class="text"><span class="text-wrapper">TỪ MÔ TẢ</span></p>
+                </div>
+                <img class="content-2" src="{{ url_for('static', filename='img/content.svg') }}" />
+              </div>
+            </div>
+            <div class="card-2">
+              <div class="content-3">
+                <div class="frame">
+                  <div class="element-wrapper"><img class="element-3" src="{{ url_for('static', filename='img/1570223-1.png') }}" /></div>
+                </div>
+                <div class="flexcontainer-2">
+                  <p class="text">
+                    <span class="text-wrapper">PHÂN ĐOẠN<br /></span>
+                  </p>
+                  <p class="text">
+                    <span class="text-wrapper"> ĐỐI TƯỢNG <br /></span>
+                  </p>
+                  <p class="text"><span class="text-wrapper">TỪ HÌNH ẢNH</span></p>
+                </div>
+                <div class="content-4"></div>
+                <img class="line" src="{{ url_for('static', filename='img/line.svg') }}" />
+              </div>
+            </div>
+            <div class="card-3">
+              <div class="content-5">
+                <div class="frame-2">
+                  <div class="div-2"></div>
+                  <img class="ai" src="{{ url_for('static', filename='img/ai-1.png') }}" />
+                </div>
+                <div class="flexcontainer-3">
+                  <p class="text">
+                    <span class="text-wrapper">SINH ẢNH <br /></span>
+                  </p>
+                  <p class="text"><span class="text-wrapper">TỪ ĐỐI TƯỢNG</span></p>
+                </div>
+                <img class="content-6" src="{{ url_for('static', filename='img/content-2.svg') }}" />
+              </div>
+            </div>
+            <div class="card-4">
+              <div class="content-7">
+                <div class="div-2"></div>
+                <div class="icon"></div>
+                <div class="flexcontainer-4">
+                  <p class="text">
+                    <span class="text-wrapper">ĐÁNH GIÁ <br /></span>
+                  </p>
+                  <p class="text"><span class="text-wrapper">HÌNH ẢNH</span></p>
+                </div>
+                <img class="content-8" src="{{ url_for('static', filename='img/content-2.svg') }}" />
+                <img class="predictive-chart" src="{{ url_for('static', filename='img/predictive-chart-1.png') }}" />
+              </div>
+            </div>
+          </div>
+          <img class="step" src="{{ url_for('static', filename='img/step-1-1.png') }}" />
+          <img class="step-2" src="{{ url_for('static', filename='img/step-1-2.png') }}" />
+          <img class="step-3" src="{{ url_for('static', filename='img/step-1-4.png') }}" />
+          <img class="step-4" src="{{ url_for('static', filename='img/step-1-3.png') }}" />
+          <img class="title" src="{{ url_for('static', filename='img/c-c-b-c-th-c-hi-n.png') }}" />
+          <img class="ADGENDIFF-removebg" src="{{ url_for('static', filename='img/adgendiff-removebg-preview-1.png') }}" />
+        </div>
+      </div>
+    </div>
+    <script>
+      // Lấy ra các phần tử bạn muốn kích hoạt các route khi click vào
+      const contentWrapper = document.querySelector('.card-1');
+      const divWrapper = document.querySelector('.card-2');
+      const element4 = document.querySelector('.card-3');
+      const element5 = document.querySelector('.card-4');
+    
+      // Định nghĩa hàm xử lý sự kiện click
+      function handleRedirect(event, route) {
+        event.preventDefault(); // Ngăn chặn hành động mặc định của sự kiện click
+        window.location.href = route; // Chuyển hướng đến route được chỉ định
+      }
+    
+      // Gắn sự kiện click cho các phần tử và kích hoạt route tương ứng
+      contentWrapper.addEventListener('click', function(event) {
+        handleRedirect(event, '/generate');
+      });
+    
+      divWrapper.addEventListener('click', function(event) {
+        handleRedirect(event, '/img2img');
+      });
+    
+      element4.addEventListener('click', function(event) {
+        handleRedirect(event, '/img2img');
+      });
+    
+      element5.addEventListener('click', function(event) {
+        handleRedirect(event, '/predict');
+      });
+    </script>
+    
+  </body>
+</html>

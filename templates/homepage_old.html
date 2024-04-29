@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+    <title>Homepage</title>
+</head>
+<body>
+    <h1>Homepage</h1>
+    <img src="{{ url_for('static', filename = 'img/10328754-1.png') }}">
+    <a href="/generate" class="btn btn-primary">Tạo mô tả từ văn bản</a>
+    <a href="/img2img" class="btn btn-secondary">Lấy đối tượng từ hình ảnh</a>
+    <a href="#" class="btn btn-success">Sinh hình ảnh từ đối tượng</a>
+    <a href="/predict" class="btn btn-danger">Đánh giá hình ảnh</a>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

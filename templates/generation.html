@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generation ADGENDIFF</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/globals.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <style>
+       
+
+        /* .container {
+            max-width: 800px;
+            margin: 0 auto;
+        } */
+
+        #input_text, #output {
+            font-size: 18px; /* Kích thước chữ */
+            resize: none; /* Không cho phép resize */
+        }
+
+        #input_text {
+            height: 150px; /* Kích thước textarea nhập */
+        }
+
+        #output {
+            height: 200px; /* Kích thước textarea đầu ra */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="desktop">
+      <div class="overlap-wrapper">
+        <div class="overlap">
+          <div class="background">
+            <div class="overlap-group">
+              <img class="img" src="{{ url_for('static', filename='img/background.svg') }}" />
+              <img class="background-2" src="{{ url_for('static', filename='img/background-1.png') }}" />
+            </div>
+            <!-- <div class="container" > -->
+                <h1 class="title_text" >TRÍCH LỌC ĐẶC TRƯNG TỪ VĂN BẢN</h1>
+                <button class="bt1 btn btn-dark" onclick="TomTat()">TRÍCH THÔNG TIN</button>
+                <button class="bt2 btn btn-dark" onclick="CreatePromt()">MÔ TẢ NGẪU NHIÊN</button>
+                <button class="bt3 btn btn-dark" onclick="copyText()">COPY</button>
+
+                <div class="form-group">
+                    <textarea id="input_text" class="form-control" rows="5" placeholder="NHẬP VĂN BẢN MÔ TẢ"></textarea>
+                    <textarea id="output" class="form-control" rows="5" readonly placeholder="ĐẶC TRƯNG ĐƯỢC TRÍCH TỪ MÔ TẢ"></textarea>
+                </div>
+               
+        </div>
+        <img class="ADGENDIFF-removebg" src="{{ url_for('static', filename='img/adgendiff-removebg-preview-1.png') }}" />
+        <img class="home"   src="{{ url_for('static', filename='img/left-arrow.png') }}" />
+                
+      
+
+     
+
+    <script>
+        function TomTat() {
+            var input_text = document.getElementById("input_text").value;
+            fetch('/TomTat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'input_text=' + input_text
+            })
+            .then(response => response.text())
+            .then(data => document.getElementById("output").innerText = data)
+            .catch(error => console.error('Error:', error));
+        }
+
+        function CreatePromt() {
+            var input_text = document.getElementById("input_text").value;
+            fetch('/CreatePromt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'input_text=' + input_text
+            })
+            .then(response => response.text())
+            .then(data => document.getElementById("output").innerText = data)
+            .catch(error => console.error('Error:', error));
+        }
+
+        function copyText() {
+            var outputTextarea = document.getElementById("output");
+            var outputText = outputTextarea.value; // Lấy nội dung từ textarea
+
+            // Gửi nội dung qua POST request đến /Copy để chuyển sang tiếng Anh
+            fetch('/Copy', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'output=' + outputText
+            })
+            .then(response => response.text())
+            .then(englishText => {
+                // Sao chép nội dung tiếng Anh vào clipboard
+                copyToClipboard(englishText);
+                // Hiển thị thông báo
+                alert("ĐÃ SAO CHÉP NỘI DUNG!");
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Hàm sao chép nội dung vào clipboard
+        function copyToClipboard(text) {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+        var homeButton = document.querySelector(".home");
+        homeButton.addEventListener("click", function() {
+            window.location.href = "/"; // Đường dẫn của trang chủ của bạn
+        });
+    });
+        
+    </script>
+</body>
+</html>

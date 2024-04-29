@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict ADGENDIFF</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/globals.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    
+</head>
+
+<body >
+    <div class="desktop">
+        <div class="overlap-wrapper">
+          <div class="overlap">
+            <div class="background">
+              <div class="overlap-group">
+                <img class="img" src="{{ url_for('static', filename='img/background.svg') }}" />
+                <img class="background-2" src="{{ url_for('static', filename='img/background-1.png') }}" />
+              </div>
+              <h1 class="title_text" >ĐÁNH GIÁ HÌNH ẢNH ĐƯỢC SINH RA</h1>
+                <div class="container mt-5">
+
+                    <div class="btn-group mb-4">
+                        <button type="button" class="btn btn-primary" onclick="uploadFromFolder()">Upload from Folder</button>
+                    </div>
+
+                    <div class="custom-file mb-4">
+                        <input type="file" class="custom-file-input" id="imageInput" accept="image/*" onchange="previewImage(this)">
+                        <label class="custom-file-label" for="imageInput">Choose file</label>
+                    </div>
+                    
+                    <img id="previewImage" src="#" alt="Preview" style="max-width: 100%; max-height: 300px; display: none;">
+
+                    <button class="btn btn-lg btn-primary mt-4" onclick="predict()">Predict</button>
+
+                    <div id="result" class="mt-4"></div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="imageListModal" tabindex="-1" role="dialog" aria-labelledby="imageListModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="imageListModalLabel">Select Image from Folder</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body grid-container" id="imageListModalBody">
+                                <h1> hi </h1>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- logo -->
+                <img class="ADGENDIFF-removebg" src="{{ url_for('static', filename='img/adgendiff-removebg-preview-1.png') }}" />
+                <!-- back home -->
+                 <img class="home"   src="{{ url_for('static', filename='img/left-arrow.png') }}" />
+                 <img id="previewImage" src="#" alt="Preview" style="max-width: 100%; max-height: 300px; display: none;">
+
+    
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        
+
+        function selectImage(imageUrl) {
+            var preview = document.getElementById('previewImage');
+            preview.src = imageUrl;
+            preview.style.display = 'block';
+            $('#imageListModal').modal('hide');
+        }
+
+        function uploadFromFolder() {
+            fetch('/upload_from_folder')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    var imageList = data.image_list;
+                    var html = '';
+
+                    // Display list of images in modal
+                    imageList.forEach(image => {
+                        html += '<div class="card mb-2">';
+                        html += '<img class="card-img-top" src="' + image + '" alt="Image" onclick="selectImage(\'' + image + '\')">';
+                        html += '<div class="card-body">';
+                        html += '<button class="btn btn-primary btn-sm" onclick="selectImage(\'' + image + '\')">Select</button>';
+                        html += '</div>';
+                        html += '</div>';
+                    });
+
+                    document.getElementById('imageListModalBody').innerHTML = html;
+                    $('#imageListModal').modal('show');
+                } else {
+                    alert('Failed to fetch image list.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function selectImage(imageUrl) {
+            var preview = document.getElementById('previewImage');
+            preview.src = imageUrl;
+            preview.style.display = 'block';
+            $('#imageListModal').modal('hide');
+        }
+
+        function predict() {
+            var fileInput = document.getElementById('imageInput');
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('image', file);
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = "Predicted class: " + data.predicted_class;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        // back-home xử lí sự kiện click vào nút back home
+        document.addEventListener("DOMContentLoaded", function() {
+        var homeButton = document.querySelector(".home");
+        homeButton.addEventListener("click", function() {
+            window.location.href = "/"; // Đường dẫn của trang chủ của bạn
+        });
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,617 @@
+  .desktop {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+  }
+
+
+
+  .desktop .overlap-wrapper {
+    background-color: #ffffff;
+    overflow: hidden;
+    width: 1533px;
+    height: 695px;
+  }
+
+
+
+  .desktop .overlap {
+    position: relative;
+    width: 1717px;
+    height: 1130px;
+    left: -143px;
+  }
+
+  .desktop .background {
+    position: absolute;
+    width: 1519px;
+    height: 695px;
+    top: 0;
+    left: 0;
+  }
+
+  .desktop .overlap-group {
+    position: relative;
+    width: 1533px;
+    height: 695px;
+    left: 143px;
+    overflow: hidden;
+  }
+
+  .desktop .img {
+    position: absolute;
+    width: 1530px;
+    height: 695px;
+    top: 0px;
+    left: 0px;
+  }
+
+  .desktop .background-2 {
+    position: absolute;
+    width: 1533px;
+    height: 589px;
+    top: 0px;
+    left: 0;
+    z-index: 0; 
+  }
+
+  .desktop .pattern {
+    position: absolute;
+    width: 561px;
+    height: 589px;
+    top: 106px;
+    left: 1115px;
+  }
+
+  .desktop .image {
+    position: absolute;
+    width: 796px;
+    height: 611px;
+    top: 422px;
+    left: 706px;
+  }
+
+  .desktop .overlap-group-wrapper {
+    height: 611px;
+  }
+
+  .desktop .div {
+    position: relative;
+    width: 1301px;
+    height: 567px;
+    top: -294px;
+    left: -331px;
+  }
+
+  .desktop .vector {
+    position: absolute;
+    width: 889px;
+    height: 418px;
+    top: 149px;
+    left: 412px;
+  }
+
+  .desktop .vector-2 {
+    position: absolute;
+    width: 1163px;
+    height: 567px;
+    top: 0;
+    left: 0;
+  }
+
+  .desktop .ellipse {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 299px;
+    left: 963px;
+    background-color: #d2e4ff;
+    border-radius: 22.16px;
+    transform: rotate(-165deg);
+  }
+
+  .desktop .ellipse-2 {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 445px;
+    left: 427px;
+    background-color: #f6e3ff;
+    border-radius: 22.16px;
+  }
+
+  .desktop .ellipse-3 {
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    top: 345px;
+    left: 923px;
+    background-color: #a4c6fa;
+    border-radius: 11.73px;
+    transform: rotate(-165deg);
+  }
+
+  .desktop .element {
+    display: flex;
+    width: 1386px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 102px;
+    position: absolute;
+    top: 263px;
+    left: 216px;
+  }
+
+  .desktop .card-1 {
+    display: flex;
+    width: 270px;
+    height: 380px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 33px 50px 40px;
+    position: relative;
+    border-radius: 30px;
+    border: 1px solid;
+    border-color: #414145;
+    background: linear-gradient(180deg, rgb(53.92, 53.92, 61.62) 0%, rgb(41, 41, 48) 100%);
+    cursor: pointer; 
+  }
+
+  .desktop .content {
+    display: flex;
+    flex-direction: column;
+    width: 301px;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    margin-bottom: -63px;
+    margin-left: -52px;
+    margin-right: -52px;
+  }
+
+  .desktop .div-2 {
+    position: relative;
+    width: 214px;
+    height: 213px;
+    background-color: #292930;
+    border-radius: 107px/106.5px;
+  }
+
+  .desktop .element-2 {
+    position: absolute;
+    width: 142px;
+    height: 129px;
+    top: 49px;
+    left: 36px;
+    object-fit: cover;
+  }
+
+  .desktop .flexcontainer {
+    width: 315px;
+    gap: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .desktop .text {
+    position: relative;
+    align-self: stretch;
+    font-family: "Nunito", Helvetica;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 25px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27.6px;
+  }
+
+  .desktop .text-wrapper {
+    font-style: italic;
+  }
+
+  .desktop .content-2 {
+    position: relative;
+    width: 301px;
+    height: 29.25px;
+  }
+
+  .desktop .card-2 {
+    display: flex;
+    width: 270px;
+    height: 380px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 40px 50px;
+    position: relative;
+    border-radius: 30px;
+    border: 1px solid;
+    border-color: #414145;
+    background: linear-gradient(180deg, rgb(53.92, 53.92, 61.62) 0%, rgb(41, 41, 48) 100%);
+    cursor: pointer; 
+  }
+
+  .desktop .content-3 {
+    display: flex;
+    flex-direction: column;
+    width: 301px;
+    height: 376px;
+    align-items: center;
+    gap: 25px;
+    position: relative;
+    margin-bottom: -61px;
+    margin-left: -55.5px;
+    margin-right: -55.5px;
+  }
+
+  .desktop .frame {
+    position: relative;
+    width: 215px;
+    height: 213px;
+  }
+
+  .desktop .element-wrapper {
+    position: relative;
+    width: 214px;
+    height: 213px;
+    left: 1px;
+    background-color: #292930;
+    border-radius: 107px/106.5px;
+  }
+
+  .desktop .element-3 {
+    position: absolute;
+    width: 195px;
+    height: 191px;
+    top: 11px;
+    left: 10px;
+    object-fit: cover;
+  }
+
+  .desktop .flexcontainer-2 {
+    width: 315px;
+    height: 36px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .desktop .content-4 {
+    position: relative;
+    width: 301px;
+    height: 28px;
+  }
+
+  .desktop .line {
+    position: relative;
+    width: 82.5px;
+    height: 2.5px;
+  }
+
+  .desktop .card-3 {
+    display: flex;
+    width: 270px;
+    height: 380px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    padding: 6px 40px 50px;
+    position: relative;
+    border-radius: 30px;
+    border: 1px solid;
+    border-color: #414145;
+    background: linear-gradient(180deg, rgb(53.92, 53.92, 61.62) 0%, rgb(41, 41, 48) 100%);
+    cursor: pointer; 
+
+  }
+
+  .desktop .content-5 {
+    display: flex;
+    flex-direction: column;
+    width: 302px;
+    height: 341px;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    margin-bottom: -17px;
+    margin-left: -56px;
+    margin-right: -56px;
+  }
+
+  .desktop .frame-2 {
+    display: inline-flex;
+    flex-direction: column;
+    height: 232px;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 0px 0px;
+    position: relative;
+  }
+
+  .desktop .ai {
+    position: absolute;
+    width: 172px;
+    height: 162px;
+    top: 26px;
+    left: 18px;
+    object-fit: cover;
+  }
+
+  .desktop .flexcontainer-3 {
+    width: 316px;
+    height: 97px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .desktop .content-6 {
+    position: relative;
+    width: 301px;
+    height: 29.25px;
+    margin-bottom: -48px;
+  }
+
+  .desktop .card-4 {
+    display: flex;
+    width: 270px;
+    height: 380px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    padding: 32px 40px 50px;
+    position: relative;
+    border-radius: 30px;
+    border: 1px solid;
+    border-color: #414145;
+    background: linear-gradient(180deg, rgb(53.92, 53.92, 61.62) 0%, rgb(41, 41, 48) 100%);
+    cursor: pointer; 
+  }
+
+  .desktop .content-7 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 288px;
+    height: 387px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: -112px 6px;
+    position: relative;
+    margin-bottom: -89px;
+    margin-left: -49px;
+    margin-right: -49px;
+  }
+
+  .desktop .icon {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin-left: -112px;
+  }
+
+  .desktop .flexcontainer-4 {
+    width: 315px;
+    height: 110px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .desktop .content-8 {
+    position: relative;
+    width: 301px;
+    height: 29.25px;
+    margin-left: -118px;
+    margin-right: -6.5px;
+  }
+
+  .desktop .predictive-chart {
+    position: absolute;
+    width: 150px;
+    height: 155px;
+    top: 20px;
+    left: 75px;
+    object-fit: cover;
+  }
+
+  .desktop .step {
+    height: 84px;
+    top: 165px;
+    left: 259px;
+    position: absolute;
+    width: 180px;
+    object-fit: cover;
+  }
+
+  .desktop .step-2 {
+    height: 79px;
+    top: 170px;
+    left: 633px;
+    position: absolute;
+    width: 180px;
+    object-fit: cover;
+  }
+
+  .desktop .step-3 {
+    height: 81px;
+    top: 170px;
+    left: 1381px;
+    position: absolute;
+    width: 180px;
+    object-fit: cover;
+  }
+
+  .desktop .step-4 {
+    height: 84px;
+    top: 170px;
+    left: 1007px;
+    position: absolute;
+    width: 180px;
+    object-fit: cover;
+  }
+
+  .desktop .title {
+    position: absolute;
+    width: 613px;
+    height: 73px;
+    top: 38px;
+    left: 650px;
+  }
+
+  .container{
+    position: absolute;
+    width: 613px;
+    height: 73px;
+    top: 80px;
+    left: 650px;
+  }
+
+  .desktop .ADGENDIFF-removebg {
+    position: absolute;
+    width: 113px;
+    height: 106px;
+    top: 11px;
+    left: 186px;
+    object-fit: cover;
+  }
+
+  .desktop .home {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 25px;
+    left: 1500px;
+    object-fit: cover;
+  }
+
+  .home:hover {
+    cursor: pointer; /* Thay đổi biểu tượng chuột thành hình bàn tay khi di chuột vào phần tử có lớp 'home' */
+  }
+
+  #input_text {
+    position: absolute; /* Đặt vị trí tuyệt đối */
+    width: 800px;
+    height: 73px;
+    top: 150px;
+    left: 520px; 
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 50px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    /* Đảm bảo textarea hiển thị trên các phần khác của trang */ 
+    
+  }
+
+  #output{
+    position: absolute; /* Đặt vị trí tuyệt đối */
+    width: 800px;
+    height: 100px;
+    top: 350px;
+    left: 520px; 
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 50px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+  }
+
+
+  .title_text {
+    color: #000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
+    font-family: Nunito;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: 160%; /* 88px */ 
+    position: absolute;
+    width: 900px;
+    height: 73px;
+    top: 38px;
+    left: 550px; 
+    
+  }
+
+  .title_text_predict {
+    color: #000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
+    font-family: Nunito;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: 160%; /* 88px */ 
+    position: absolute;
+    width: 900px;
+    height: 73px;
+    top: 38px;
+    left: 40%; 
+    
+  }
+
+  .bt1 {
+    color: #f4f1f1;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
+    font-family: Nunito;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: 160%; /* 88px */ 
+    position: absolute;
+    width: 220px;
+    height: 50px;
+    top: 600px;
+    left: 550px;
+    border-radius: 50px;
+  }
+
+  .bt2 {
+    color: #f4f1f1;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
+    font-family: Nunito;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: 160%; /* 88px */ 
+    position: absolute;
+    width: 250px;
+    height: 50px;
+    top: 600px;
+    left: 850px;
+    border-radius: 50px;
+  }
+
+  .bt3 {
+    color: #f4f1f1;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
+    font-family: Nunito;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: 160%; /* 88px */ 
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    top: 600px;
+    left: 1200px;
+    border-radius: 50px;
+  }
+
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 10px;
+}
