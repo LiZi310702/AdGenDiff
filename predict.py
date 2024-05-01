@@ -3,13 +3,14 @@ import cv2
 import numpy as np
 import tensorflow as tf
 from flask import Flask, request, jsonify, render_template
+import requests
 
 predict_blueprint = Blueprint('predict', __name__)
 app = Flask(__name__)
 
 # Load model
 model = tf.keras.models.load_model(r'C:\Users\LiZi\Desktop\LV\CODE\keras-flask-deploy-webapp\models\model_lenet.h5')
-categories = ['1', '2', '3', '4', '5']
+categories = ['*', '**', '***', '****', '*****']
 
 @predict_blueprint.route('/')
 def index():
@@ -17,23 +18,72 @@ def index():
 
 @predict_blueprint.route('/predict', methods=['POST'])
 def predict():
-    # Nhận ảnh từ yêu cầu POST
-    file = request.files['image']
+    if 'image' in request.files:
+        file = request.files['image']
+        # Đọc và xử lý ảnh
+        img = cv2.imdecode(np.frombuffer(file.read(), np.uint8), cv2.IMREAD_COLOR)
+        image_width = 64
+        image_height = 64
+        image = cv2.resize(img, (image_width, image_height))
+        image = np.array(image, dtype="float") / 255.0
+        image = np.expand_dims(image, axis=0)
+
+        # Dự đoán
+        pred = model.predict(image)
+        predicted_class = categories[np.argmax(pred)]
+
+        # Trả về kết quả
+        return jsonify({'predicted_class': predicted_class})
     
-    # Đọc và xử lý ảnh
-    img = cv2.imdecode(np.frombuffer(file.read(), np.uint8), cv2.IMREAD_COLOR)
-    image_width = 64
-    image_height = 64
-    image = cv2.resize(img, (image_width, image_height))
-    image = np.array(image, dtype="float") / 255.0
-    image = np.expand_dims(image, axis=0)
+    if 'image_url' in request.json:
+        image_url = request.json['image_url']
+        try:
+            response = requests.get(image_url)
+            if response.status_code == 200:
+                image_data = response.content
+                # Chuyển đổi dữ liệu ảnh sang numpy array
+                image_np = np.frombuffer(image_data, np.uint8)
+                image = cv2.imdecode(image_np, cv2.IMREAD_COLOR)
+                # Xử lý ảnh (resize, v.v.) giống ảnh upload
+                image_width = 64
+                image_height = 64
+                image = cv2.resize(image, (image_width, image_height))
+                image = np.array(image, dtype="float") / 255.0
+                image = np.expand_dims(image, axis=0)
+                # ... (giữ nguyên code xử lý ảnh)
+                pred = model.predict(image)
+                predicted_class = categories[np.argmax(pred)]
+                return jsonify({'predicted_class': predicted_class})
+            else:
+                return jsonify({'error': 'Failed to download image from URL.'})
+        except Exception as e:
+            print(e)
+            return jsonify({'error': 'Failed to download image from URL.'})
 
-    # Dự đoán
-    pred = model.predict(image)
-    predicted_class = categories[np.argmax(pred)]
 
-    # Trả về kết quả
-    return jsonify({'predicted_class': predicted_class})
+
+
+def process_image_from_url(image_url):
+    try:
+        response = requests.get(image_url)
+        if response.status_code == 200:
+            image_data = response.content
+            # Chuyển đổi dữ liệu ảnh sang numpy array
+            image_np = np.frombuffer(image_data, np.uint8)
+            image = cv2.imdecode(image_np, cv2.IMREAD_COLOR)
+            # Xử lý ảnh (resize, v.v.) giống ảnh upload
+            image_width = 64
+            image_height = 64
+            image = cv2.resize(image, (image_width, image_height))
+            image = np.array(image, dtype="float") / 255.0
+            image = np.expand_dims(image, axis=0)
+            return image
+        else:
+            return None
+    except Exception as e:
+        print(e)
+        return None
+
 
 import os
 

@@ -63,6 +63,9 @@
                             </div>
                         </div>
                     </div>
+                    <!-- ket qua -->
+                    <div id="result" class="mt-4"></div>
+
                     <!-- logo -->
                     <img class="ADGENDIFF-removebg"
                         src="{{ url_for('static', filename='img/adgendiff-removebg-preview-1.png') }}" />
@@ -79,21 +82,61 @@
 
                     <script>
 
+                        flag=true;
+                        // function selectImage(imageUrl) {
+                        //     var preview = document.getElementById('previewImage');
+                        //     var img = new Image();
+                        //     img.onload = function () {
+                        //         preview.src = imageUrl;
+                        //         preview.style.display = 'block';
+                        //         $('#imageListModal').modal('hide');
+                        //     };
+                        //     img.onerror = function () {
+                        //         // Xử lý khi hình ảnh không hợp lệ
+                        //         alert('Hình ảnh không tồn tại hoặc đường dẫn không hợp lệ.');
+                        //     };
+                        //     img.src = imageUrl;
+                        // }
 
                         function selectImage(imageUrl) {
                             var preview = document.getElementById('previewImage');
-                            var img = new Image();
-                            img.onload = function () {
-                                preview.src = imageUrl;
-                                preview.style.display = 'block';
-                                $('#imageListModal').modal('hide');
-                            };
-                            img.onerror = function () {
-                                // Xử lý khi hình ảnh không hợp lệ
-                                alert('Hình ảnh không tồn tại hoặc đường dẫn không hợp lệ.');
-                            };
-                            img.src = imageUrl;
+                            var fileInput = document.getElementById('imageInput');
+
+                            // Hiển thị ảnh được chọn trên trang
+                            preview.src = imageUrl;
+                            preview.style.display = 'block';
+                            fileInput.value = ''; // Xóa giá trị của file input để đảm bảo tải lên ảnh mới
+
+                            // Tải lên ảnh được chọn
+                            fetch(imageUrl)
+                                .then(response => response.blob())
+                                .then(blob => {
+                                    var formData = new FormData();
+                                    formData.append('image', blob);
+
+                                    // Gửi ảnh lên server để dự đoán
+                                    fetch('/predict', {
+                                        method: 'POST',
+                                        body: formData
+                                    })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            // document.getElementById('result').innerText = "Predicted class: " + data.predicted_class;
+                                            predictedResult = data.predicted_class;
+                                            flag=false
+                                        })
+                                        .catch(error => {
+                                            console.error('Error:', error);
+                                        });
+                                })
+                                .catch(error => {
+                                    console.error('Error fetching image:', error);
+                                });
+
+                            // Đóng modal sau khi chọn ảnh
+                            $('#imageListModal').modal('hide');
                         }
+
 
 
 
@@ -127,6 +170,7 @@
                                 });
                         }
 
+
                         function previewImage(input) {
                             var preview = document.getElementById('previewImage');
                             if (input.files && input.files[0]) {
@@ -140,23 +184,30 @@
                         }
 
                         function predict() {
+                            if (flag==false) {
+                                document.getElementById('result').innerText = "Predicted class: " + predictedResult;
+                                return;
+                            }
                             var fileInput = document.getElementById('imageInput');
                             var file = fileInput.files[0];
                             var formData = new FormData();
                             formData.append('image', file);
 
+                            // Gửi ảnh lên server để dự đoán
                             fetch('/predict', {
                                 method: 'POST',
                                 body: formData
                             })
                                 .then(response => response.json())
                                 .then(data => {
+                                    // Hiển thị kết quả dự đoán
                                     document.getElementById('result').innerText = "Predicted class: " + data.predicted_class;
                                 })
                                 .catch(error => {
                                     console.error('Error:', error);
                                 });
                         }
+
 
                         // Xử lí sự kiện click vào nút back home
                         document.addEventListener("DOMContentLoaded", function () {
